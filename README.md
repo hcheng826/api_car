@@ -23,12 +23,16 @@ The map defines the scenario a car may encounter on the road. Basic component is
 ## Operation
 There are 2 modes: speech mode and text recognition mode. In both mode, the car would stop at each crossroad, triggered by sensing the RFID card.
 
-In speech mode, the car decides to turn right or left base on the speech instruction sent from user, which is trancripted using sppech API
+### speech mode
+the car decides to turn right or left base on the speech instruction sent from user, which is trancripted using speech API.
 
-In text recognition mode, the car uses camera to read the sign with text recognition API and turn
+### text recognition mode
+the car uses camera to read the sign with text recognition API and turn.
+
+ Basically the car switches between 2 states, "forward state" and "listen and turn state". In the beginning it's in "forward state". When the RFID card is sensed, it turns to "listen and turn state" and turns back to "forward state" after the turn finished.
 
 ## Speech API
-1
+
 ## Text Recognition API
 
 ## Streaming
