@@ -15,5 +15,12 @@ using AI cloud cognitives APIs.
 - RFID cards and sensor
 - map(street model)
 
-## Map(street model) and Operation
-The map defines the scenario a car may encounter on the road. Basic component is a T-shaped crossroad with road sign saying "right" or "left" on the front wall and an RFID card placed on the floor. The car would stop at each crossroad, triggered by sensing the RFID card. It decides to turn right or left either from speech instruction or by recognition of the sign(2 individual modes).
+## Map(Street Model)
+The map defines the scenario a car may encounter on the road. Basic component is a T-shaped crossroad with
+- road sign saying "right" or "left" on the front wall
+- an RFID card placed on the floor
+
+## Operation
+There are 2 modes: speech mode and text recognition mode. In both mode, the car would stop at each crossroad, triggered by sensing the RFID card.
+In speech mode, the car decides to turn right or left base on the speech instruction sent from user, which is trancripted using sppech API.
+It decides to turn right or left either from speech instruction or by recognition of the sign(2 individual modes).
