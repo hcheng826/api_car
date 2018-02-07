@@ -11,7 +11,7 @@ using AI cloud cognitives APIs.
 - toy car
 - Raspberry Pi
 - Picamera
-- microphone
+- microphone(laptop)
 - RFID cards and sensor
 - map(street model)
 
@@ -26,3 +26,9 @@ There are 2 modes: speech mode and text recognition mode. In both mode, the car 
 In speech mode, the car decides to turn right or left base on the speech instruction sent from user, which is trancripted using sppech API
 
 In text recognition mode, the car uses camera to read the sign with text recognition API and turn
+
+## Speech API
+1
+## Text Recognition API
+
+## Streaming
