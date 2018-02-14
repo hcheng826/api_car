@@ -1,0 +1,6 @@
+{
+  "name": "Speech",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./Speech.js"
+}

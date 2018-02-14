@@ -3,15 +3,46 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "bootstrap": "4.0.0",
+    "chart.js": "2.7.1",
+    "flag-icon-css": "2.9.0",
+    "font-awesome": "4.7.0",
+    "google-map-react": "^0.28.0",
+    "history": "4.7.2",
+    "immutable": "^3.8.2",
+    "material-ui": "^0.20.0",
+    "node-sass-chokidar": "^0.0.3",
+    "pondjs": "^0.8.8",
+    "react": "^15.6.2",
+    "react-addons-css-transition-group": "^15.6.2",
+    "react-addons-test-utils": "^15.6.2",
+    "react-bootstrap": "^0.32.0",
+    "react-chartjs-2": "2.7.0",
+    "react-controllables": "^0.6.0",
+    "react-dom": "^15.6.2",
+    "react-pure-render": "^1.0.2",
+    "react-redux": "^5.0.6",
+    "react-router-dom": "4.2.2",
     "react-scripts": "1.1.0",
-    "semantic-ui-react": "^0.78.2"
+    "react-timeseries-charts": "^0.12.8",
+    "react-transition-group": "^2.2.1",
+    "reactstrap": "5.0.0-alpha.4",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0",
+    "simple-line-icons": "2.4.1"
   },
   "scripts": {
+    "build-css": "npm run build-dev-css1 && npm run build-dev-css2",
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "build-dev-css1": "node-sass-chokidar src/scss/dropdown-menu-right.scss -o src/styles/css/",
+    "build-dev-css2": "node-sass-chokidar src/scss/style.scss -o src/styles/css/",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.2"
   }
 }
