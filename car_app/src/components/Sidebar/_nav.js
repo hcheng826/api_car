@@ -7,7 +7,17 @@ export default {
        badge: {
          variant: 'info',
          text: 'NEW'
-       }
+       },
+      //  children: [
+      //    {
+      //      name: 'File to text',
+      //      icon: 'icon-microphone'
+      //    },
+      //    { 
+      //      name: 'Stream to text',
+      //      icon: 'icon-microphone'
+      //    }
+      //  ]
     },
     { 
       name: 'Text Mode',

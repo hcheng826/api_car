@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-class SidebarFooter extends Component {
+class SidebarFooter extends React.Component {
 
   render() {
     return null

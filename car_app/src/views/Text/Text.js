@@ -3,13 +3,14 @@ import '../../css/common.css';
 
 
 class Text extends Component {
-  render() {
-	  return (
-	   <div>
-		   wow
-		 </div>
-		 )
-	}
+	
+	render() {
+    return (
+      <div className="animated fadeIn">
+        wooow
+      </div>
+    )
+  }
 
 }
 

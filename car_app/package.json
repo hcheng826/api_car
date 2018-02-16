@@ -3,34 +3,32 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@google-cloud/speech": "^1.1.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "bootstrap": "4.0.0",
-    "chart.js": "2.7.1",
+    "express": "^4.16.2",
     "flag-icon-css": "2.9.0",
     "font-awesome": "4.7.0",
-    "google-map-react": "^0.28.0",
     "history": "4.7.2",
     "immutable": "^3.8.2",
     "material-ui": "^0.20.0",
-    "node-sass-chokidar": "^0.0.3",
-    "pondjs": "^0.8.8",
+    "node-record-lpcm16": "^0.3.0",
     "react": "^15.6.2",
     "react-addons-css-transition-group": "^15.6.2",
     "react-addons-test-utils": "^15.6.2",
     "react-bootstrap": "^0.32.0",
-    "react-chartjs-2": "2.7.0",
-    "react-controllables": "^0.6.0",
     "react-dom": "^15.6.2",
+    "react-mic": "^9.0.0",
     "react-pure-render": "^1.0.2",
     "react-redux": "^5.0.6",
     "react-router-dom": "4.2.2",
     "react-scripts": "1.1.0",
-    "react-timeseries-charts": "^0.12.8",
     "react-transition-group": "^2.2.1",
     "reactstrap": "5.0.0-alpha.4",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
-    "simple-line-icons": "2.4.1"
+    "simple-line-icons": "2.4.1",
+    "websocket": "^1.0.25"
   },
   "scripts": {
     "build-css": "npm run build-dev-css1 && npm run build-dev-css2",
@@ -39,10 +37,15 @@
     "build-dev-css2": "node-sass-chokidar src/scss/style.scss -o src/styles/css/",
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "run-server": "nodemon server/",
+    "dev": "concurrently --kill-others-on-fail \"yarn run-server\" \"yarn start\"",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "concurrently": "^3.5.1",
+    "node-sass-chokidar": "^0.0.3",
     "npm-run-all": "^4.1.2"
-  }
+  },
+  "proxy": "http://localhost:5000"
 }

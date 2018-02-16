@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-class SidebarHeader extends Component {
+class SidebarHeader extends React.Component {
 
   render() {
     return null
