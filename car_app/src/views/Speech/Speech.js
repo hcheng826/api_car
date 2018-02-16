@@ -2,15 +2,20 @@ import React, { Component } from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import ExpandTransition from 'material-ui/internal/ExpandTransition';
 import { ReactMic } from 'react-mic';
+import '../../css/speech.css';
+import '../../css/common.css';
+
 class Speech extends Component {
 
   state = {
     transcription: '',
     socketOpen: false,
-    loading: false
+    loading: false,
 	}
 	socket = null;
   
+  
+
   dummyAsync = (cb) => {
     this.setState({loading: true}, () => {
       this.asyncTimer = setTimeout(cb, 500);
@@ -47,7 +52,8 @@ class Speech extends Component {
 			this.socket.close();
       this.socket = null;
       this.setState({
-        socketOpen: false
+        socketOpen: false,
+        transcription: ''
       })
       this.handleToggle();
 		}
@@ -55,20 +61,26 @@ class Speech extends Component {
 	}
   render() {
     const { socketOpen, loading } = this.state;
+    console.log('rendered');
 	  return (
-      <div className="animated fadeIn">
+      <div className="animated fadeIn speech-container">
         <div>
           <RaisedButton label="start" onClick={this.handleStart}/>
           <RaisedButton label="stop" onClick={this.handleStop}/>
         </div>
         <ExpandTransition open={socketOpen} loading={loading}>
-          <ReactMic
-            record={socketOpen}
-            className="oscilloscope"
-            strokeColor="#FFF"
-            backgroundColor="#000"/>
+          <div className="column-flex-container mic-container">
+            <ReactMic
+              record={socketOpen}
+              className="oscilloscope visual-graph"
+              strokeColor="#FFF"
+              backgroundColor="#000"/>
+            <span className="transcription">
+              {this.state.socketOpen && this.state.transcription}
+            </span>
+          </div>
         </ExpandTransition>
-        <span>{this.state.socketOpen && this.state.transcription}</span>
+              
       </div>
 		 )
 	}

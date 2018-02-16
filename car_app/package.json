@@ -23,7 +23,7 @@
     "react-redux": "^5.0.6",
     "react-router-dom": "4.2.2",
     "react-scripts": "1.1.0",
-    "react-transition-group": "^2.2.1",
+    "react-transition-group": "1.x",
     "reactstrap": "5.0.0-alpha.4",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
@@ -31,8 +31,8 @@
     "websocket": "^1.0.25"
   },
   "scripts": {
-    "build-css": "npm run build-dev-css1 && npm run build-dev-css2",
-    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "build-css": "yarn run build-dev-css1 && yarn run build-dev-css2",
+    "watch-css": "yarn run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "build-dev-css1": "node-sass-chokidar src/scss/dropdown-menu-right.scss -o src/styles/css/",
     "build-dev-css2": "node-sass-chokidar src/scss/style.scss -o src/styles/css/",
     "start": "react-scripts start",
