@@ -9,4 +9,3 @@ if not result:
   print('Not detected')
 else:
   print(result)
-cam.release()

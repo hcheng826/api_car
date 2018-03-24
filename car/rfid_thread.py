@@ -1,10 +1,10 @@
 import sys
-from libraries.MFRC522 import MFRC522
-from pubsub import pub
+from modules.MFRC522 import MFRC522
 import signal
 import RPi.GPIO as gpio
 import time
 import threading
+import requests
 
 class rfid_thread(threading.Thread):
   def __init__(self, name):
@@ -24,6 +24,7 @@ class rfid_thread(threading.Thread):
       except KeyboardInterrupt:
         print()
         exit(-1)
+    print('[RFID]', 'stopped')
   
  # def end_read(self, signal, frame):
   #  print()
@@ -39,6 +40,7 @@ class rfid_thread(threading.Thread):
     if status == OK:
       if uid != self.last_uid:
         print('[RFID]', 'Card detected')
-        pub.sendMessage('rfid', arg1='card detected')
+        requests.get('http://localhost:5000/rfid')
         self.last_uid = uid
-
+      else:
+        pass
