@@ -10,7 +10,7 @@ const client = new speech.SpeechClient();
  */
 const encoding = 'LINEAR16';
 const sampleRateHertz = 16000;
-const languageCode = 'zh-TW';
+const languageCode = 'en-US';
 
 const request = {
   config: {

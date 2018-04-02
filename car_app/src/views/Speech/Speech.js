@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import ExpandTransition from 'material-ui/internal/ExpandTransition';
 import { ReactMic } from 'react-mic';
+import { validateTranscription } from '../../util';
 import '../../css/speech.css';
 import '../../css/common.css';
 
@@ -14,7 +15,21 @@ class Speech extends Component {
 	}
 	socket = null;
   
-  
+  componentWillUpdate(props, state) {
+    const api = validateTranscription(state.transcription);
+    const PI_URL = 'http://192.168.50.175:5000/';
+    // console.log(api);
+    if(api) {
+      fetch(PI_URL+api, {
+        mode: 'cors'
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+      }) 
+    }
+  }
+
 
   dummyAsync = (cb) => {
     this.setState({loading: true}, () => {
@@ -61,7 +76,6 @@ class Speech extends Component {
 	}
   render() {
     const { socketOpen, loading } = this.state;
-    console.log('rendered');
 	  return (
       <div className="animated fadeIn speech-container">
         <div>
