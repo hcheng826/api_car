@@ -5,6 +5,7 @@ import { ReactMic } from 'react-mic';
 import { validateTranscription } from '../../util';
 import '../../css/speech.css';
 import '../../css/common.css';
+import { PI_URL } from '../../constants';
 
 class Speech extends Component {
 
@@ -17,17 +18,14 @@ class Speech extends Component {
   
   componentWillUpdate(props, state) {
     const api = validateTranscription(state.transcription);
-    const PI_URL = 'http://192.168.50.175:5000/';
-    // console.log(api);
-    if(api) {
-      fetch(PI_URL+api, {
-        mode: 'cors'
-      })
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-      }) 
-    }
+    console.log(api);
+      // if(api) {
+      //   fetch(PI_URL + api)
+      //   .then(res => res.json())
+      //   .then(data => {
+      //     console.log(data);
+      //   }) 
+      // }
   }
 
 

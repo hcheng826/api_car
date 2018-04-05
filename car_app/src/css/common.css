@@ -1,4 +1,4 @@
-.column-flex-container {
+.col-flex-container {
   display: flex;
 	flex-direction: column;
   align-items: center;
@@ -6,8 +6,8 @@
 
 .row-flex-container {
   display: flex;
-	flex-direction: row-reverse;
-  align-items: center;
+	/* flex-direction: row-reverse; */
+  align-items: stretch;
 }
 
 .row-container {

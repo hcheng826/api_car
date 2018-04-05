@@ -1,0 +1,13 @@
+.rfid {
+  -webkit-transition: filter 1s;
+  transition: filter 1s; 
+}
+.invert {
+  -webkit-filter: invert(.8);
+  filter: invert(.8);
+}
+
+.img-container {
+  flex: 1;
+  /* justify-content:  center; */
+}

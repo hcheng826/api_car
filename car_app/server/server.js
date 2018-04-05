@@ -34,6 +34,7 @@ wsApp.on('request', (req) => {
     .pipe(recognizeStream(connection));
   // connection.send('lalala');
   connection.on('close', function(reasonCode, description) {
+      console.log('record disconnected');
       record.stop();
       console.log((new Date()) + ' Peer ' + connection.remoteAddress + ' disconnected.');
   });
