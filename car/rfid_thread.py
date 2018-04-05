@@ -6,6 +6,7 @@ import time
 import threading
 import requests
 
+
 class rfid_thread(threading.Thread):
   def __init__(self, name):
     print('[RFID]', 'initialize')
@@ -16,6 +17,7 @@ class rfid_thread(threading.Thread):
     self.last_uid = 0
     #signal.signal(signal.SIGINT, self.end_read)
   
+
   def run(self):
     print('[RFID]', 'starting')
     while self.reading:
