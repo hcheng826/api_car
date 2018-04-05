@@ -4,19 +4,23 @@ if len(sys.argv) != 2 or not (sys.argv[1] != 'text' or sys.argv[1] != 'speech'):
   exit(-1)
 
 import RPi.GPIO as gpio
+import requests
 from flask import Flask, jsonify, Response
+from flask_socketio import SocketIO, emit
 from modules.api_helper import Helper
 from modules.camera_opencv import Camera
 from modules.controller import Controller
 from rfid_thread import rfid_thread
-
+ 
 mode = sys.argv[1]
 SUBSCRIPTION_KEY = '1b8a0bc45d9842f5a6446ea51f133cde'
+PC_URL = 'http://169.254.64.1:5000'
 if mode == 'text':
   helper = Helper(SUBSCRIPTION_KEY)
   frame = None
 
 app = Flask(__name__)
+socketio = SocketIO(app)
 controller = Controller(23, 18) # motor_pin, servo_pin
 
 @app.route('/')
@@ -58,10 +62,22 @@ def video_feed():
     return Response(gen(Camera()),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
+@socketio.on('connect')
+def on_connect():
+  print('new connection')
+  #emit('wow', {'data': 'wooohoo'})
+
+
+@app.route('/test')
+def on_test():
+  socketio.emit('wow', {'data': 'lalala'})
+  return jsonify(success=True)
+
 @app.route('/rfid')
 def on_rfid():
   global frame
   controller.stop()
+  socketio.emit('rfid')
   cmd = ''
   if mode == 'text' and frame:
     result = helper.recognize_frame(frame).lower().rstrip()
@@ -72,6 +88,7 @@ def on_rfid():
       controller.right(4)
     elif cmd == 'stop':
       controller.stop()
+  socketio.emit('cmd', {'cmd': cmd})
   return jsonify(cmd=cmd)
 
 def result2cmd(result):
@@ -89,8 +106,9 @@ if __name__ == '__main__':
   gpio.setmode(gpio.BCM)
   rfid = rfid_thread('makentu')
   try:
+    #app.run(host='0.0.0.0', threaded=True, debug=False)
     rfid.start()
-    app.run(host='0.0.0.0', threaded=True, debug=False)
+    socketio.run(app, host='0.0.0.0')
   except KeyboardInterrupt:
     print('Interrupt, Exiting...')
   finally:
